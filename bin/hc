@@ -48,7 +48,7 @@ if __name__ == "__main__":
 	send_message_to_room(
 		args.message,
 		roomId,
-		api_token=api_token,
+		api_token=apiToken,
 		sender=messageSender,
 		color=messageColor,
 	)
