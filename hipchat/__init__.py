@@ -1,6 +1,6 @@
 """python-hipchat"""
 
-VERSION = (0, 0, 1)
+VERSION = (0, 1, 0)
 
 __version__ = ".".join(map(str, VERSION[0:3])) + "".join(VERSION[3:])
 __author__ = "Ryan Balfanz"
