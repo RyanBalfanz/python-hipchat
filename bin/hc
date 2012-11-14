@@ -6,7 +6,7 @@ import os
 import sys
 
 from hipchat.api import send_message_to_room
-
+from hipchat.utils import ensure_config
 
 DEFAULT_CONFIG_PATH = "~/.hipchat.cfg"
 
@@ -26,11 +26,7 @@ if __name__ == "__main__":
 	args = parser.parse_args()
 
 	configPath = args.config or os.path.expanduser(DEFAULT_CONFIG_PATH)
-	configDefaults = {
-		"api_token": os.getenv("HIPCHAT_API_TOKEN")
-	}
-	config = ConfigParser.ConfigParser(configDefaults)
-	config.read(configPath)
+	config = ensure_config(configPath)
 
 	roomName = args.room or config.get("hipchat", "room_name")
 	try:
@@ -45,12 +41,14 @@ if __name__ == "__main__":
 		exitMessage = "The room '{r}' was not found in config at {cp}"
 		sys.exit(exitMessage.format(r=args.room, cp=configPath))
 
+	apiToken = config.get("hipchat", "api_token") or os.getenv("HIPCHAT_API_TOKEN")
 	messageSender = args.user or config.get("message_sender", "alias")
 	messageColor = args.color or config.get("message_sender", "color")
 
 	send_message_to_room(
 		args.message,
 		roomId,
+		api_token=api_token,
 		sender=messageSender,
 		color=messageColor,
 	)
