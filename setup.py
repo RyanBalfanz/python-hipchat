@@ -8,7 +8,7 @@ import hipchat as distmeta
 if os.path.exists("README.md"):
 	long_description = codecs.open("README.md", "r", "utf-8").read()
 else:
-	long_description = "See http://ryanbalfanz.github.com/django-sendgrid/"
+	long_description = "See https://github.com/RyanBalfanz/python-hipchat"
 
 setup(
 	name="python-hipchat",
