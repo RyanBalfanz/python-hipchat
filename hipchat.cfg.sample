@@ -1,0 +1,12 @@
+; https://www.hipchat.com/docs/api/method/rooms/message
+
+[hipchat]
+api_token: abc123
+room_name: test
+
+[rooms]
+test: 123
+
+[message_sender]
+alias: Python-HipChat
+color: random ; "yellow", "red", "green", "purple", "gray", or "random"
